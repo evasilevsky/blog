@@ -7,18 +7,20 @@ import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 
+import { AddPostComponent } from './add-post/add-post.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
-    PostListComponent
+    PostListComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

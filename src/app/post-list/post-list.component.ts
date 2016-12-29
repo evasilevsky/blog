@@ -16,6 +16,11 @@ export class PostListComponent implements OnInit {
       new Post("Title 1", "Body 1"),
       new Post("Title 2", "Body 2")
     ];
+    if ("localStorage" in window) {
+      let storedPosts = localStorage.getItem("posts");
+      let posts: Post[] = JSON.parse(storedPosts);
+      this.posts = posts;
+    }
   }
 
 }
