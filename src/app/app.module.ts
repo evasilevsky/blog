@@ -10,9 +10,11 @@ import { PostListComponent } from './post-list/post-list.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { NavPostListComponent } from './nav-post-list/nav-post-list.component';
 import { Routes, RouterModule } from '@angular/router';
+import { PostPageComponent } from './post-page/post-page.component';
 
 const appRoutes: Routes = [
-  { path: 'post/:id', component: PostComponent },
+  { path: 'posts', component: PostListComponent },
+  { path: 'post/:id', component: PostPageComponent }
 ];
 
 @NgModule({
@@ -21,7 +23,8 @@ const appRoutes: Routes = [
     PostComponent,
     PostListComponent,
     AddPostComponent,
-    NavPostListComponent
+    NavPostListComponent,
+    PostPageComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
