@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'app/post';
 
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'post-list',
   templateUrl: './post-list.component.html',
@@ -12,15 +14,19 @@ export class PostListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.posts = [
-      new Post("Title 1", "Body 1"),
-      new Post("Title 2", "Body 2")
-    ];
     if ("localStorage" in window) {
-      let storedPosts = localStorage.getItem("posts");
-      let posts: Post[] = JSON.parse(storedPosts);
-      this.posts = posts;
+      this.getDataFromLocalStorage()
+        .subscribe(s => {
+          console.log("next: " + s.title);
+        })
     }
+  }
+
+  private getDataFromLocalStorage = () => {
+    let storedPosts = localStorage.getItem("posts");
+    let posts: Post[] = JSON.parse(storedPosts);
+    this.posts = posts;
+    return Observable.from(posts);
   }
 
 }
