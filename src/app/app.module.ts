@@ -11,6 +11,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { NavPostListComponent } from './nav-post-list/nav-post-list.component';
 import { Routes, RouterModule } from '@angular/router';
 import { PostPageComponent } from './post-page/post-page.component';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   { path: 'posts', component: PostListComponent },
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     PostListComponent,
     AddPostComponent,
     NavPostListComponent,
-    PostPageComponent
+    PostPageComponent,
+    HeaderComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
