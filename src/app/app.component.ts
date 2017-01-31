@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Post } from 'app/post';
 import { Observable } from 'rxjs';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { ActivatedRoute } from '@angular/router';
+import { PostService } from 'app/post.service';
 
 @Component({
   selector: 'app-root',
@@ -9,24 +12,13 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   private posts: Post[];
-  constructor() { }
+  private selectedPost: any;
+  constructor(
+    private postService: PostService,
+    private af: AngularFire
+  ) { }
 
   ngOnInit() {
-    if ("localStorage" in window) {
-      this.getDataFromLocalStorage()
-        .subscribe(s => {
-          console.log("next: " + s.title);
-        })
-    }
   }
 
-  private getDataFromLocalStorage = () => {
-    let storedPosts = localStorage.getItem("posts");
-    let posts: Post[] = [];
-    if (storedPosts) {
-      posts = JSON.parse(storedPosts);
-    }
-    this.posts = posts;
-    return Observable.from(posts);
-  }
 }

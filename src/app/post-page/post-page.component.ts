@@ -22,18 +22,4 @@ export class PostPageComponent implements OnInit {
       this.post = this.postService.getPost("fmDl9t7hnCTFXwu1GWaxnVY6hFm1", params['id']);
     })
   }
-
-  private getPost = (id: string) => {
-    this.post = this.postService.getPost("fmDl9t7hnCTFXwu1GWaxnVY6hFm1", id);
-    // let storedPosts = localStorage.getItem("posts");
-    // if (storedPosts) {
-    //   let posts: Post[] = JSON.parse(storedPosts);
-    //   let filteredPosts: Post[] = posts.filter((post: Post) => {
-    //     return post.id === id;
-    //   });
-    //   if (filteredPosts.length > 0) {
-    //     this.post = filteredPosts[0];
-    //   }
-    // }
-  }
 }

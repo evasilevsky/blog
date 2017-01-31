@@ -12,7 +12,6 @@ export class PostService {
     this.af.auth.subscribe(auth => console.log(auth.uid));
   }
   public getPosts = (uid: string) => {
-    console.log("getting posts");
     let req = "/users/" + uid + "/posts";
     this.posts = this.af.database.list(req);
     return this.posts;
