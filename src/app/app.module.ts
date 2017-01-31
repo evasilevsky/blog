@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 
+import { PostService } from './post.service';
+
 import { AddPostComponent } from './add-post/add-post.component';
 import { NavPostListComponent } from './nav-post-list/nav-post-list.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -44,6 +46,9 @@ var firebaseAuthConfig = {
     PostPageComponent,
     HeaderComponent,
     LoginComponent
+  ],
+  providers: [
+    PostService
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
