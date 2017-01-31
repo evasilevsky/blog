@@ -1,0 +1,3 @@
+<button *ngIf="!firebaseAuth" (click)="loginWithGoogle()">Google</button>
+
+<button *ngIf="firebaseAuth && firebaseAuth.auth" (click)="logout()">Logout</button>
