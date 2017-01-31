@@ -10,6 +10,7 @@ import { PostService } from 'app/post.service';
 export class NavPostListComponent implements OnInit {
   private uid: string;
   private canDelete: boolean = false;
+  private canEdit: boolean = false;
   private role: FirebaseObjectObservable<any>;
   posts: FirebaseListObservable<any>;
   constructor(private af: AngularFire,
@@ -20,8 +21,10 @@ export class NavPostListComponent implements OnInit {
         .subscribe(t => {
           if (t.$value === "admin") {
             this.canDelete = true;
+            this.canEdit = true;
           } else {
             this.canDelete = false;
+            this.canEdit = true;
           }
         })
       this.posts = this.postService.getPosts(auth.uid)
