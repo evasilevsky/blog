@@ -1,2 +1,2 @@
-<div>{{post.title}}<div>
-<div>{{post.body}}</div>
+<div>{{(post | async)?.title}}<div>
+<div>{{(post | async)?.body}}</div>

@@ -1,4 +1,4 @@
-<div *ngFor="let testPost of testPosts | async">
-  <div>{{testPost.title}}</div>
-  <button (click)="deletePost(testPost.$key)">X</button>
+<div *ngFor="let post of posts | async">
+  <a routerLink="/post/{{post.$key}}">{{post.title}}</a>
+  <button *ngIf="canDelete" (click)="deletePost(post.$key)">X</button>
 </div>

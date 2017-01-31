@@ -14,10 +14,12 @@ export class PostService {
   public getPosts = (uid: string) => {
     console.log("getting posts");
     let req = "/users/" + uid + "/posts";
-    console.log(req);
     this.posts = this.af.database.list(req);
     return this.posts;
-      // .subscribe(t => console.log(t));
+  }
+
+  public getPost = (uid: string, postId: string) => {
+    return this.af.database.object("/users/" + uid + "/posts/" + postId)
   }
 
   public addPost = (title: string, body: string) => {
