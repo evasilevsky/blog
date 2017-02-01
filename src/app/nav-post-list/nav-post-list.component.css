@@ -5,3 +5,7 @@
 span, a, button {
     padding: inherit;
 }
+
+.odd {
+    background-color: lightpink;
+}
