@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'app/user.service';
 
 @Component({
   selector: 'admin-tools',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminToolsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
   }
 
+  
+  toggleEnableEditing = () => {
+    this.userService.toggleEnableEditing();
+  }
 }
