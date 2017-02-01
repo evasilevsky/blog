@@ -9,7 +9,6 @@ export class PostService {
   constructor(
     private af: AngularFire
   ) { 
-    this.af.auth.subscribe(auth => console.log(auth.uid));
   }
   public getPosts = (uid: string) => {
     let req = "/users/" + uid + "/posts";

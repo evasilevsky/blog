@@ -19,6 +19,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { AddPostPageComponent } from './add-post-page/add-post-page.component';
+import { AdminToolsComponent } from './admin-tools/admin-tools.component';
 
 const appRoutes: Routes = [
   { path: 'posts', component: PostListComponent },
@@ -49,7 +50,8 @@ var firebaseAuthConfig = {
     PostPageComponent,
     HeaderComponent,
     LoginComponent,
-    AddPostPageComponent
+    AddPostPageComponent,
+    AdminToolsComponent
   ],
   providers: [
     PostService,

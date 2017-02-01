@@ -3,23 +3,31 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 
 @Injectable()
 export class UserService {
+  private auth: any;
   private userSettings: UserSettings = new UserSettings();
   constructor(
     private af: AngularFire
   ) {
-   
     this.af.auth.subscribe(auth => {
-      this.af.database.object("/users/" + auth.uid + "/role")
+      this.auth = auth;
+      this.af.database.object("/users/" + auth.uid)
         .subscribe(t => {
-          if (t.$value === "admin") {
-            this.userSettings.canDelete = true;
-            this.userSettings.canEdit = true;
+          console.log(t);
+          if (t.role === "admin") {
+            this.userSettings.enableEditing = t.settings.enableEditing;
           } else {
-            this.userSettings.canDelete = false;
-            this.userSettings.canEdit = false;
+            this.userSettings.enableEditing = false;
           }
         });
     });
+   }
+
+   public toggleEnableEditing = () => {
+     this.userSettings.enableEditing = !this.userSettings.enableEditing;
+     this.af.database.object("/users/" + this.auth.uid + "/settings")
+      .set({
+        enableEditing: this.userSettings.enableEditing
+      })
    }
 
    public getUserSettings = () => {
@@ -28,6 +36,5 @@ export class UserService {
 }
 
 export class UserSettings {
-  canEdit: boolean = false;
-  canDelete: boolean = false;
+  enableEditing: boolean = false;
 }
