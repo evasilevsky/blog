@@ -25,7 +25,7 @@ export class UserService {
    public toggleEnableEditing = () => {
      this.userSettings.enableEditing = !this.userSettings.enableEditing;
      this.af.database.object("/users/" + this.auth.uid + "/settings")
-      .set({
+      .update({
         enableEditing: this.userSettings.enableEditing
       })
    }

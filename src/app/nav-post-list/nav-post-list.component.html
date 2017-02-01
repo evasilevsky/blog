@@ -1,5 +1,6 @@
-<div class="left-nav col-xs-12" *ngFor="let post of posts | async">
+<div class="left-nav col-xs-12" *ngFor="let post of posts | async; let i = index">
+  <span class="col-xs-1">{{i + 1}}</span>
   <a class="col-xs-4" routerLink="/post/{{post.$key}}">{{post.title}}</a>
-  <button class="btn btn-primary col-xs-4" *ngIf="userSettings.canEdit" (click)="editPost(post.$key)">Edit</button>
+  <button class="btn btn-primary col-xs-3" *ngIf="userSettings.canEdit" (click)="editPost(post.$key)">Edit</button>
   <button class="btn btn-primary col-xs-4" *ngIf="userSettings.canDelete" (click)="deletePost(post.$key)">Remove</button>
 </div>
