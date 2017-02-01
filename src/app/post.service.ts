@@ -13,7 +13,11 @@ export class PostService {
   }
   public getPosts = (uid: string) => {
     let req = "/users/" + uid + "/posts";
-    this.posts = this.af.database.list(req);
+    this.posts = this.af.database.list(req, {
+      query: {
+        limitToLast: 20, orderByKey: true
+      }
+    });
     return this.posts;
   }
 

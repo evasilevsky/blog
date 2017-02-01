@@ -14,8 +14,4 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  enableEditing = () => {
-    this.userService.toggleEnableEdit();
-  }
 }
