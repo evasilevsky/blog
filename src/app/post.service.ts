@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 import { Post } from 'app/post';
 
 @Injectable()
@@ -20,7 +20,7 @@ export class PostService {
     return this.posts;
   }
 
-  public getPost = (uid: string, postId: string) => {
+  public getPost = (uid: string, postId: string): FirebaseObjectObservable<Post> => {
     return this.af.database.object("/users/" + uid + "/posts/" + postId)
   }
 
