@@ -1,3 +1,8 @@
-.left-nav {
+.nav-post-list {
     background-color: #ff2999;
+    padding: 0px;
+}
+
+span, a, button {
+    padding: inherit;
 }
