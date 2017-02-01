@@ -5,6 +5,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class UserService {
   private auth: any;
   private userSettings: UserSettings = new UserSettings();
+  private role: string = "member";
   constructor(
     private af: AngularFire
   ) {
@@ -12,7 +13,7 @@ export class UserService {
       this.auth = auth;
       this.af.database.object("/users/" + auth.uid)
         .subscribe(t => {
-          console.log(t);
+            this.role = t.role;
           if (t.role === "admin") {
             this.userSettings.enableEditing = t.settings.enableEditing;
           } else {
@@ -32,6 +33,10 @@ export class UserService {
 
    public getUserSettings = () => {
      return this.userSettings;
+   }
+
+   public getRole = () => {
+     return this.role;
    }
 }
 

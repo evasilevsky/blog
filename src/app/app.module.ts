@@ -11,6 +11,7 @@ import { PostListComponent } from './post-list/post-list.component';
 
 import { PostService } from './post.service';
 import { UserService } from './user.service';
+import { CanActivateAddPost } from './can-activate-add-post.service';
 
 import { AddPostComponent } from './add-post/add-post.component';
 import { NavPostListComponent } from './nav-post-list/nav-post-list.component';
@@ -24,7 +25,7 @@ import { AdminToolsComponent } from './admin-tools/admin-tools.component';
 const appRoutes: Routes = [
   { path: 'posts', component: PostListComponent },
   { path: 'post/:id', component: PostPageComponent },
-  { path: 'addpost', component: AddPostPageComponent }
+  { path: 'addpost', component: AddPostPageComponent, canActivate: [CanActivateAddPost] }
 ];
 
 var firebaseConfig = {
@@ -55,7 +56,8 @@ var firebaseAuthConfig = {
   ],
   providers: [
     PostService,
-    UserService
+    UserService,
+    CanActivateAddPost
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),

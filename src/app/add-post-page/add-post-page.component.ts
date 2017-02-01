@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'app/user.service';
 
 @Component({
   selector: 'add-post-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPostPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    
+  ) { }
 
   ngOnInit() {
+    
   }
 
 }
